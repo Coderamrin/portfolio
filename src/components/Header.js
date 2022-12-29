@@ -28,18 +28,16 @@ const Header = () => {
             <a href="/#contact">Contact</a>
           </li>
           <li>
-            <a href="/#resume">Resume</a>
+            <a href="https://drive.google.com/file/d/1ugumpTwoA8vtAAWw2ezI0CZP2IGUwPzF/view">
+              Resume
+            </a>
           </li>
         </ul>
       </nav>
 
       {/* Mobile Nav */}
       <nav
-        className={
-          !toggle
-            ? "mobile-nav left-[-100%]"
-            : "mobile-nav left-0"
-        }
+        className={!toggle ? "mobile-nav left-[-100%]" : "mobile-nav left-0"}
       >
         <ul className="flex flex-col">
           <li>
