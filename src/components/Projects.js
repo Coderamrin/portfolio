@@ -58,8 +58,8 @@ const Projects = () => {
           return (
             <div className="relative" key={i}>
               <img src={project.img} alt={project.title} />
-              <div className="flex absolute left-0 right-0 top-[13px] bottom-0 mx-auto w-[90%] h-[90%]  bg-[#112147c0]  opacity-0 duration-500 justify-center flex-col hover:opacity-100 ">
-                <p className="py-5 text-center font-bold px-2 text-gray-400">
+              <div className="flex absolute left-0 right-0 top-[13px] bottom-0 mx-auto w-[90%] h-[90%]  bg-primary  opacity-0 duration-500 justify-center flex-col hover:opacity-100 ">
+                <p className="py-5 text-center font-bold px-2 text-white">
                   {project.desc}
                 </p>
 

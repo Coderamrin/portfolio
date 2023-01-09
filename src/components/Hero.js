@@ -45,9 +45,12 @@ const Hero = () => {
             </a>
           </div>
 
-          <button className=" btn bg-accent  border-2 border-[#7477FF] text-white px-6 py-3 hover:bg-transparent">
+          <a
+            href="/#projects"
+            className=" btn bg-accent  border-2 border-[#7477FF] text-white px-6 py-3 hover:bg-transparent"
+          >
             See Projects
-          </button>
+          </a>
         </div>
 
         <div className="hero-img">
