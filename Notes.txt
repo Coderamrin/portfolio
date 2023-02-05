@@ -1,0 +1,6 @@
+API
+Get articles by user:
+    https://dev.to/api/articles?username=coderamrin
+
+Get single article:
+    https://dev.to/api/articles/id

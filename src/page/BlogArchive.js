@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-const Blog = () => {
+const BlogArchive = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
     fetch("https://dev.to/api/articles?username=coderamrin")
       .then((res) => res.json())
-      .then((data) => setBlogs(data.slice(0, 2)))
+      .then((data) => setBlogs(data))
       .catch((error) => console.log(error.message));
   });
 
@@ -46,4 +46,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default BlogArchive;
