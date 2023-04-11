@@ -26,7 +26,7 @@ const Blog = () => {
 
       <div className="projects container mx-auto grid md:grid-cols-2 gap-10">
         {blogs.map((item) => {
-          console.log(item);
+          
 
           return (
             <div>
@@ -34,6 +34,7 @@ const Blog = () => {
               <h3 className="py-5 text-2xl">{item.title}</h3>
               <a
                 href={item.url}
+                target="_blank"
                 className=" btn bg-accent  border-2 border-[#7477FF] text-white px-6 py-3 hover:bg-transparent"
               >
                 Read More

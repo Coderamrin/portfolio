@@ -8,31 +8,30 @@ const Header = () => {
   const handleToggle = () => setToggle(!toggle);
 
   return (
-    <header className="flex justify-between px-5 py-2 bg-primary text-white fixed w-full z-10">
+    <header className="flex justify-around px-5 py-2 bg-primary text-white fixed w-full z-10">
       <a href="/" className="logo text-2xl font-bold text-accent">
-        Amrin
+        Uday
       </a>
 
       {/* Desktop Nav */}
       <nav className="hidden md:block">
         <ul className="flex">
           <li>
-            <a href="/#about">About</a>
+            <a href="/projects">Projects</a>
           </li>
           <li>
-            <a href="/#projects">Projects</a>
+            <a href="/about">About</a>
           </li>
           <li>
-            <Link to="/blog">Blog</Link>
+            <Link to="/blogs">Blog</Link>
           </li>
           <li>
-            <a href="/#contact">Contact</a>
+            <Link to="/contact">Contact</Link>
           </li>
           <li>
             <a
-              href="https://drive.google.com/file/d/1ugumpTwoA8vtAAWw2ezI0CZP2IGUwPzF/view"
+              href="https://drive.google.com/file/d/175YDJCitLGRmG-dX6q3SuhbqRmdTqFWL/view?usp=sharing"
               target="_blank"
-              without
               rel="noreferrer"
             >
               Resume
