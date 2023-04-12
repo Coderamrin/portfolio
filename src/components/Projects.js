@@ -2,6 +2,8 @@ import React from "react";
 import AdvanceToDo from "../assets/cssprojects.png";
 import Patient from "../assets/devlog.png";
 import port from "../assets/uilogs.png";
+import { motion } from 'framer-motion';
+
 
 const Projects = () => {
   const projects = [
@@ -26,7 +28,7 @@ const Projects = () => {
   ];
 
   return (
-    <section className=" bg-primary text-white px-5 py-32 h-screen" id="projects">
+    <section className=" bg-gradient-to-b from-blue-900 to-purple-800 text-white px-5 py-32 h-screen" id="projects">
       <div className="container mx-auto grid md:grid-cols-2 items-center md:justify-between">
         <div className="about-info mb-5">
           <h2 className="text-4xl font-bold mb-12 border-b-[5px] w-[180px] border-indigo-600 pb-2">
@@ -45,7 +47,7 @@ const Projects = () => {
       <div className="projects container mx-auto grid md:grid-cols-3 gap-10 rounded-lg ">
         {projects.map((project, i) => {
           return (
-            <div className="relative " key={i}>
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.5 }} className="relative " key={i}>
               <img
                 className="rounded-lg mb-5 mt-5"
                 src={project.img}
@@ -66,7 +68,7 @@ const Projects = () => {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>

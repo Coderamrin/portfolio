@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@keyframes hero-text {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 0.4;
+    transform: translateX(90);
+  }
+}
+
+.animate-hero-text {
+  animation: hero-text 1s ease-out;
+}

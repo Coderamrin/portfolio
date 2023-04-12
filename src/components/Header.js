@@ -8,14 +8,13 @@ const Header = () => {
   const handleToggle = () => setToggle(!toggle);
 
   return (
-    <header className="flex justify-around px-5 py-2 bg-primary text-white fixed w-full z-10">
-      <a href="/" className="logo text-2xl font-bold text-accent">
+    <header className="flex text-3xl justify-around px-5 py-2 bg-primary text-white fixed w-full z-10">
+      <a href="/" className="logo font-bold text-accent">
         Uday
       </a>
 
-      {/* Desktop Nav */}
       <nav className="hidden md:block">
-        <ul className="flex">
+        <ul className="flex ">
           <li>
             <a href="/projects">Projects</a>
           </li>
@@ -40,7 +39,6 @@ const Header = () => {
         </ul>
       </nav>
 
-      {/* Mobile Nav */}
       <nav
         className={!toggle ? "mobile-nav left-[-100%]" : "mobile-nav left-0"}
       >
@@ -63,7 +61,6 @@ const Header = () => {
         </ul>
       </nav>
 
-      {/* Toggle button */}
       <button onClick={handleToggle} className="block md:hidden">
         {!toggle ? <AiOutlineMenu size={30} /> : <AiOutlineClose size={30} />}
       </button>
