@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    @apply text-lg
+}
+
+.projects img {
+    width: 100%;
+}
+
+.mobile-nav {
+    @apply block md:hidden fixed top-10 py-2 w-full h-full bg-gray-900 duration-500;
+}
+
+
+.btn-bg{
+    @apply bg-gradient-to-r from-violet-500 to-purple-500   hover:from-purple-500 hover:to-violet-500 duration-300;
+}
+
+/* hero */
+h1 {
+    /* font-family: 'Pacifico', cursive; */
+    /* line-height: 1.5 !important; */
+}
+
+.form-label {
+    @apply text-gray-800;
+}
+
+.form-control {
+    @apply w-full text-base px-2 py-2 border border-gray-200 rounded-md block mt-1 focus:border-purple-500 focus:outline-none text-gray-800;
+}
+
+
