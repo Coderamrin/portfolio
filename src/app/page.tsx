@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import Blog from "../components/Blog";
 import Hero from "../components/Hero";
 
+const url = process.env.SITE_URL;
+
 export const metadata: Metadata = {
   title: "Amrin",
   description:
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
     title: "Coderamrin Blog",
     description:
       "A Frontend Developer. I love to build beautiful and interactive websites.",
-    images: "/images/og-image.jpg",
+    images: `${url}/images/og-image.jpg`,
     url: process.env.SITE_URL!,
   },
   twitter: {
@@ -19,7 +21,7 @@ export const metadata: Metadata = {
     title: "Coderamrin Blog",
     description:
       "A Frontend Developer. I love to build beautiful and interactive websites.",
-    images: "/images/og-image.jpg",
+    images: `${url}/images/og-image.jpg`,
   },
 };
 
