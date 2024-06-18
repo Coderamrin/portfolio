@@ -2,6 +2,28 @@ import React from "react";
 import Link from "next/link";
 import { getAllPosts } from "@/libs/markdown";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Coderamrin Blog",
+  description:
+    "Learn about Next.js, React.js and all the other frontend technologies",
+  openGraph: {
+    type: "website",
+    title: "Coderamrin Blog",
+    description:
+      "Learn about Next.js, React.js and all the other frontend technologies.",
+    images: "/images/og-image.jpg",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Coderamrin Blog",
+    description:
+      "Learn about Next.js, React.js and all the other frontend technologies.",
+    images: "/images/og-image.jpg",
+  },
+};
+
 const BlogArchive = () => {
   const posts = getAllPosts([
     "title",

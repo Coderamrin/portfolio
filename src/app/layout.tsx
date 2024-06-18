@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -6,11 +5,6 @@ import Footer from "@/components/Footer";
 import ToastContext from "@/context/ToastContext";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "Amrin (coderamrin) | Frontend developer",
-  description: "This is coderamrin portfolio Home page",
-};
 
 export default function RootLayout({
   children,
