@@ -10,17 +10,17 @@ export const metadata: Metadata = {
     "A Frontend Developer. I love to build beautiful and interactive websites.",
   openGraph: {
     type: "website",
-    title: "Coderamrin Blog",
+    title: "Amrin",
     description:
-      "A Frontend Developer. I love to build beautiful and interactive websites.",
+      "A Frontend Developer who love to build beautiful and interactive websites.",
     images: `${url}/images/og-image.jpg`,
     url: process.env.SITE_URL!,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Coderamrin Blog",
+    title: "Amrin",
     description:
-      "A Frontend Developer. I love to build beautiful and interactive websites.",
+      "A Frontend Developer who love to build beautiful and interactive websites.",
     images: `${url}/images/og-image.jpg`,
   },
 };

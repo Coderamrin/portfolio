@@ -1,5 +1,6 @@
 import { getAllPosts, getPostBySlug } from "@/libs/markdown";
 import markdownToHtml from "@/libs/markdownToHtml";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: { slug: string };
@@ -93,6 +94,12 @@ export default async function Post({ params }: Props) {
     "published_at",
     "edited_at",
   ]);
+
+  console.log(post);
+
+  if (post?.success === false) {
+    return notFound();
+  }
 
   const content = await markdownToHtml(post.content || "");
 
