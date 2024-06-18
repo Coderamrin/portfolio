@@ -5,7 +5,7 @@ import React from "react";
 export const metadata: Metadata = {
   title: `Projects`,
   description: `My favorite projects`,
-  robots: "nonindex, nofollow",
+  // robots: "nonindex, nofollow",
 };
 
 const ProjectsPage = () => {
