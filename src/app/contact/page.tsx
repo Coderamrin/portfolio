@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     description: `Get in touch with me`,
   },
   alternates: {
-    canonical: process.env.SITE_URL!,
+    canonical: `${process.env.SITE_URL}/contact`,
   },
   // robots: "noindex, nofollow",
 };

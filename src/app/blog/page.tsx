@@ -24,9 +24,9 @@ export const metadata: Metadata = {
       "Learn about Next.js, React.js and all the other frontend technologies.",
     images: `${url}/images/og-image.jpg`,
   },
-  
+
   alternates: {
-    canonical: process.env.SITE_URL!,
+    canonical: `${url}/blog`,
   },
 };
 

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: `Projects`,
   description: `My favorite projects`,
   alternates: {
-    canonical: process.env.SITE_URL!,
+    canonical: `${process.env.SITE_URL}/projects`,
   },
   // robots: "nonindex, nofollow",
 };
