@@ -61,6 +61,10 @@ export async function generateMetadata({ params }: Props) {
         siteName: "@coderamrin",
         creator: "@coderamrin",
       },
+
+      alternates: {
+        canonical: `${process.env.SITE_URL}/blog/${post.slug}`,
+      },
     };
 
     return metadata;

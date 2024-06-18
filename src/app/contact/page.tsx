@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     title: `Contact`,
     description: `Get in touch with me`,
   },
+  alternates: {
+    canonical: process.env.SITE_URL!,
+  },
   // robots: "noindex, nofollow",
 };
 

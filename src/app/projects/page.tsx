@@ -5,6 +5,9 @@ import React from "react";
 export const metadata: Metadata = {
   title: `Projects`,
   description: `My favorite projects`,
+  alternates: {
+    canonical: process.env.SITE_URL!,
+  },
   // robots: "nonindex, nofollow",
 };
 

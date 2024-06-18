@@ -23,6 +23,10 @@ export const metadata: Metadata = {
       "A Frontend Developer who love to build beautiful and interactive websites.",
     images: `${url}/images/og-image.jpg`,
   },
+
+  alternates: {
+    canonical: process.env.SITE_URL!,
+  },
 };
 
 export default function Home() {
