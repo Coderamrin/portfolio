@@ -14,13 +14,34 @@ export default async function sitemap() {
   const posts = blog.map(({ slug, edited_at }) => ({
     url: `${URL}/blog/${slug}`,
     lastModified: new Date(edited_at).toISOString(),
-    changeFrequency: 'monthly',
+    changeFrequency: "monthly",
+    priority: 0.8,
   }));
 
-  const routes = ["", "/blog", "/about"].map((route) => ({
+  const staticPages = [
+    {
+      path: "/",
+      priority: 1,
+    },
+    {
+      path: "/blog",
+      priority: 0.9,
+    },
+    {
+      path: "/contact",
+      priority: 0.9,
+    },
+    {
+      path: "/projects",
+      priority: 0.9,
+    },
+  ];
+
+  const routes = staticPages.map(({ path: route, priority }) => ({
     url: `${URL}${route}`,
     lastModified: new Date().toISOString(),
-    changeFrequency: 'monthly',
+    changeFrequency: "monthly",
+    priority: priority,
   }));
 
   return [...routes, ...posts];

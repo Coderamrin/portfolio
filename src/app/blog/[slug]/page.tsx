@@ -99,8 +99,6 @@ export default async function Post({ params }: Props) {
     "edited_at",
   ]);
 
-  console.log(post);
-
   if (post?.success === false) {
     return notFound();
   }
