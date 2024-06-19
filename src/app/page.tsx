@@ -27,6 +27,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: process.env.SITE_URL!,
   },
+
+  // icons: {
+  //   icon: `${url}/images/icons/favicon.ico`,
+  //   shortcut: `${url}/images/icons/favicon-16x16.png`,
+  //   apple: `${url}/images/icons/apple-touch-icon.png`,
+  // },
 };
 
 export default function Home() {
