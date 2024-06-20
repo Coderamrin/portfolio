@@ -14,7 +14,7 @@ export default async function sitemap() {
   const posts = blog.map(({ slug, edited_at }) => ({
     url: `${URL}/blog/${slug}`,
     lastModified: new Date(edited_at).toISOString(),
-    changeFrequency: "monthly",
+    changeFrequency: "daily",
     priority: 0.8,
   }));
 
@@ -40,7 +40,7 @@ export default async function sitemap() {
   const routes = staticPages.map(({ path: route, priority }) => ({
     url: `${URL}${route}`,
     lastModified: new Date().toISOString(),
-    changeFrequency: "monthly",
+    changeFrequency: "daily",
     priority: priority,
   }));
 
