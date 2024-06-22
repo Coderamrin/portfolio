@@ -14,9 +14,9 @@ const Header = () => {
           {data.map((item) => (
             <li key={item.name}>
               <Link
-                className={`mr-3 p-1 font-medium text-base hover:underline hover:text-purple-500 capitalize ${
-                  path.includes(item.link!) && item.link != "/" ? "text-purple-500 underline" : ""
-                } ${path === "/" && item.link == "/" ? "text-purple-500 underline" : ""}`}
+                className={`mr-3 p-1 font-medium text-base hover:underline hover:text-purple-600 capitalize ${
+                  path.includes(item.link!) && item.link != "/" ? "text-purple-600 underline" : ""
+                } ${path === "/" && item.link == "/" ? "text-purple-600 underline" : ""}`}
                 href={item.link!}
                 target={item.external ? "_blank" : "_self"}
               >

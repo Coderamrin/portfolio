@@ -122,6 +122,8 @@ const Contact = () => {
                     key={i}
                     className="btn-bg p-1 rounded-md hover:scale-105 duration-300 text-white"
                     href={item.url}
+                    target="_blank"
+                    aria-label={`${item.name} link`}
                   >
                     {item.icon}
                   </a>
