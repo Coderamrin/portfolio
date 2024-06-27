@@ -107,7 +107,7 @@ export default async function Post({ params }: Props) {
 
   return (
     <>
-      <article className="mx-4 prose prose-lg md:prose-xl dark:prose-invert md:mx-auto mt-16">
+      <article className="mx-4 prose prose-lg md:prose-xl md:mx-auto mt-16">
         {/* <article class="prose md:prose-lg lg:prose-xl">{{ markdown }}</article> */}
         <div className="mb-20">
           <h1 className="!mb-0 !leading-tight text-gray-800">{post.title}</h1>
