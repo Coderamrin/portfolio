@@ -1,0 +1,299 @@
+---
+title: "Internationalizing Next.js: A Comprehensive Guide to i18n Integration"
+metaTitle: "Internationalizing Next.js: A Comprehensive Guide to i18n Integration"
+description: Internationalization (i18n) is a crucial feature for any modern web application that seeks to reach a global audience. It enables you to deliver content in various languages, making your application accessible and user-friendly to people from different linguistic backgrounds.
+
+published_at: July 06, 2024
+edited_at: July 06, 2024
+tags:
+  - i18n
+  - internationalization
+  - next.js
+  - beginners
+---
+
+Internationalization (i18n) is a crucial feature for any modern web application that seeks to reach a global audience. It enables you to deliver content in various languages, making your application accessible and user-friendly to people from different linguistic backgrounds.
+
+In today’s guide, you will learn how to integrate internationalization to a Next.js application using `next-intl`.
+
+Let’s get started.
+
+### Prerequisite
+
+To make the most out of this guide, here’s what you should have under your belt:
+
+1. Understanding of Next.js app router and TypeScript.
+2. Knowledge of how Next.js Middleware works.
+
+## Install Next.js
+
+To integrate multi-language support you need a Next.js project.
+
+Let’s create a brand new project with create-next-app.
+
+```jsx
+npx create-next-app@latest
+```
+
+Run the above command and go with all the default options. You can choose the options according to your requirements.
+
+Once you are done, you will have the Next.js project ready to integrate multi-language support.
+
+## Write the Translations
+
+Before we proceed to configure `next-intl` we need the translation for the different languages.
+
+We will keep all the translations in the **messages** folder. You can name it anything you want.
+
+Translations are stored as JSON objects. We only have a title for this example.
+
+Go ahead and add all your text and their corresponding translations in these files.
+
+![example of translations folders](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/cgnl17wx6toq4736d1dy.png)
+
+## Configure next-intl
+
+First, you have to install next-intl
+
+Run this command to install the package:
+
+```jsx
+npm install next-intl
+```
+
+Once done, create a new route named [locale] inside the app directory.
+
+And move all the routes under [locale], we will use this to get the locale and show the text in that language.
+
+![moving all the pages inside locale route](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/bxwc3xgdkg9re2vr92bz.png)
+
+Now that we have all set up, let’s configure next-intl.
+
+**#1:** Create a config file on the root of your project's directory and name it: **i18n.ts.**
+
+Paste this code snippet into that file:
+
+```jsx
+import { notFound } from "next/navigation";
+import { getRequestConfig } from "next-intl/server";
+
+export const locales = ["en", "de", "fr"];
+
+export default getRequestConfig(async ({ locale }) => {
+  // Validate that the incoming `locale` parameter is valid
+  if (!locales.includes(locale as any)) notFound();
+
+  return {
+    messages: (await import(`../messages/${locale}.json`)).default,
+  };
+});
+
+```
+
+In this code snippet, set up the locales for your project and validate the incoming locale parameter. If the locale is not on your list, redirect it to the not-found page. If it matches one of the locales, return the message for that locale.
+
+**#2**: Create **middleware.ts** file on the root of your project.
+
+Copy this code snippet over to your middleware
+
+```jsx
+import createMiddleware from "next-intl/middleware";
+import { locales } from "./i18n";
+
+export default createMiddleware({
+  // A list of all locales that are supported
+  locales: locales,
+
+  // Used when no locale matches
+  defaultLocale: "en",
+  // Removes the locale when it's default
+  localePrefix: "as-needed",
+});
+
+export const config = {
+  // Match only internationalized pathnames
+  matcher: ["/", "/(de|en|fr)/:path*"],
+};
+```
+
+Import the locales from the i18n config file you created earlier and the CreateMiddleware function from next-intl.
+
+Inside the CreateMiddlware function, you can specify all the options you want to have.
+
+Check out the next-intl [documentation](https://next-intl-docs.vercel.app/docs/routing/middleware) for more information.
+
+## Use the Translation
+
+All the configurations are done.
+
+Now, let’s see how to use the translation on a Client Component.
+
+### Client component
+
+To use the translation on a Client Component, you must wrap your Layout with `NextIntlClientProvider`.
+
+And pass the messages as props to use on the Client components.
+
+```jsx
+import "./globals.css";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import LangSwitcher from "@/components/LangSwitcher";
+
+export default async function LocaleLayout({
+  children,
+  params: { locale },
+}: {
+  children: React.ReactNode,
+  params: { locale: string },
+}) {
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
+
+  return (
+    <html lang={locale}>
+      <body>
+        <NextIntlClientProvider messages={messages}>
+          <LangSwitcher />
+          {children}
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+Here is an example of using translation on a client component.
+
+```jsx
+import { useTranslations } from "next-intl";
+
+export default function Index() {
+  const t = useTranslations("Index");
+
+  return (
+    <div className="container text-center my-5 mx-auto">
+      <h1 className="text-3xl font-bold">{t("title")}</h1>
+    </div>
+  );
+}
+```
+
+First, import the **`useTranslations`** hook from **next-intl** and \*\*\*\*then call it by the object name.
+It will provide the associated translations.
+
+You can add more translations like this:
+
+```jsx
+{
+  "Index": {
+    "title": "Hallo Welt"
+  },
+  {
+   "About": {
+	   "title": "About Us"
+	   ...
+   }
+  }
+}
+
+```
+
+This way you can use the translations on a Client Component.
+
+Let’s see how to use the translation on a Server Component.
+
+### Server component
+
+For the server component, you don’t have to configure anything else.
+
+Just import `getTranslations` and call it with the translation object key.
+
+```jsx
+import React from "react";
+import { getTranslations } from "next-intl/server";
+
+const AboutPage = async () => {
+  const t = await getTranslations("About");
+  return (
+    <div className="container text-center my-5 mx-auto">
+      <h1 className="text-3xl font-bold">{t("title")}</h1>
+    </div>
+  );
+};
+
+export default AboutPage;
+```
+
+This is how you can use translations on a Server Component.
+
+Now to test our translations let’s create a language switcher.
+
+## Language switcher
+
+Create a file named **LangSwitcher.tsx** in the components folder.
+
+And paste this code into that file.
+
+```jsx
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { locales } from "@/i18n";
+
+const LangSwitcher = () => {
+  const pathName = usePathname();
+
+  const redirectedPathName = (locale: string) => {
+    if (!pathName) return "/";
+    const segments = pathName.split("/");
+    segments[1] = locale;
+    return segments.join("/");
+  };
+
+  return (
+    <div className="flex space-x-10 justify-center my-5">
+      {locales.map((locale) => (
+        <Link
+          key={locale}
+          href={redirectedPathName(locale)}
+          className="capitalize hover:underline hover:text-blue-500"
+        >
+          {locale}
+        </Link>
+      ))}
+    </div>
+  );
+};
+
+export default LangSwitcher;
+```
+
+This is the language switcher for your Next.js application. It dynamically generates links for each locale in the `locales` array, modifying the current path to reflect the selected locale.
+
+When a user clicks on a locale link, they are redirected to the same page but in the chosen language.
+
+## Resources:
+
+**Documentations:** https://next-intl-docs.vercel.app/docs/getting-started
+
+**Source code:** https://github.com/Coderamrin/next14-i18n-integration
+
+## **Conclusion**
+
+This article showed you how to integrate multi-language support into your Next.js projects.
+
+If you followed this article step by step you should have i18n integrated on your Next.js project.
+
+Comment below if you have any questions or suggestions.
+
+**Connect With Me**
+
+[Twitter/x](https://x.com/CoderAmrin)
+
+[Github](https://github.com/coderamrin/)
+
+[LinkedIn](https://www.linkedin.com/in/coderamrin/)
+
+Happy Coding.

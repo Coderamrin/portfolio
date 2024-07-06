@@ -39,7 +39,7 @@ const BlogArchive = () => {
     "coverImage",
     "slug",
   ]);
-
+  
   if (!posts) {
     return <div>Loading...</div>;
   }
