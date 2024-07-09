@@ -47,9 +47,12 @@ const BlogArchive = () => {
   return (
     <main className="px-5 flex-1">
       <section className="pt-16 max-w-[815px] mx-auto">
-        {/* <h2 className="text-2xl font-bold text-gray-700 mb-3">
-          Latest Blog Posts
-        </h2> */}
+      <div className="pb-8">
+        <h2 className="text-3xl font-bold text-gray-700">Blog Archive</h2>
+        <p className="py-3 text-gray-600">Explore the archive of past blog posts, covering a wide range of topics and insights.</p>
+
+      </div>
+        
         <div className="">
           {posts.map((item: any, i) => {
             return (
