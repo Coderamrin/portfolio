@@ -6,7 +6,7 @@ const Projects = () => {
     <main className="px-5  max-w-[800px] mx-auto flex-1">
       <div className="pb-8 pt-20">
         <h2 className="text-3xl font-bold text-gray-700">Projects</h2>
-        <p className="py-3 text-gray-600">Here are some of my projects.</p>
+        <p className="py-3 text-gray-600">Here are some of the projects that I have worked on.</p>
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">

@@ -4,7 +4,7 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: `Projects`,
-  description: `My favorite projects`,
+  description: `Check out some of the projects I have worked on`,
   alternates: {
     canonical: `${process.env.SITE_URL}/projects`,
   },
