@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${process.env.SITE_URL}/projects`,
   },
-  // robots: "nonindex, nofollow",
+  robots: "nonindex, nofollow",
 };
 
 const ProjectsPage = () => {

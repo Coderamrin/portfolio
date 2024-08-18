@@ -17,7 +17,7 @@ const Header = () => {
                 className={`mr-3 p-1 font-medium text-base hover:underline hover:text-purple-600 capitalize ${
                   path.includes(item.link!) && item.link != "/" ? "text-purple-600 underline" : ""
                 } ${path === "/" && item.link == "/" ? "text-purple-600 underline" : ""}`}
-                href={item.link!}
+                href={item.link || "/"}
                 target={item.external ? "_blank" : "_self"}
               >
                 {item.name}
