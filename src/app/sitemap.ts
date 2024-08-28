@@ -27,10 +27,6 @@ export default async function sitemap() {
       path: "/blog",
       priority: 0.9,
     },
-    {
-      path: "/contact",
-      priority: 0.9,
-    },
   ];
 
   const routes = staticPages.map(({ path: route, priority }) => ({

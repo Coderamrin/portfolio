@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${process.env.SITE_URL}/contact`,
   },
-  // robots: "noindex, nofollow",
+  robots: "noindex, nofollow",
 };
 
 const ContactPage = () => {
