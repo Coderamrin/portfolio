@@ -19,7 +19,7 @@ const Blog = async () => {
     <section className="pt-16">
       <h2 className="text-2xl font-bold text-gray-700 mb-3">Latest Posts</h2>
       <div className="container">
-        {posts.slice(0, 7).map((item: any, i) => {
+        {posts.slice(0, 4).map((item: any, i) => {
           return (
             <Link
               href={`/blog/${item.slug}`}
