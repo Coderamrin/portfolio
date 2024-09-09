@@ -1,0 +1,214 @@
+---
+title: "Integrating Code Blocks with Syntax Highlighting in Sanity Blogs "
+metaTitle: "Integrating Code Blocks with Syntax Highlighting in Sanity Blogs "
+description: In this post, we explore how to integrate code blocks and syntax highlighting into your Sanity-powered blog. Follow along as we break down the steps to enhance your blog's functionality and improve code readability for your readers.
+
+published_at: September 9, 2024
+edited_at: September 9, 2024
+tags:
+  - saniy
+  - code-block
+  - blog
+  - next.js
+  - syntaxHighlighter
+---
+
+
+
+We built a complete blog with Sanity but don’t have support for code input and syntax highlight. 
+
+So, today we will integrate code input and syntax highlight on our blog.
+
+Let’s get started. 
+
+### Install the package
+
+To enable code input on Sanity Studio install the sanity/code-input package
+
+```jsx
+npm install @sanity/code-input
+
+or
+
+yarn add @sanity/code-input
+```
+
+For syntax highlight install react-syntax-highlighter
+
+```jsx
+npm install react-syntax-highlighter
+
+or
+
+yarn add react-syntax-highlighter 
+```
+
+### Add the plugin
+
+Once the installation is complete, add the plugin to the sanity.config.ts file.
+
+```jsx
+
+import { codeInput } from "@sanity/code-input";
+
+const config = defineConfig({
+  //..
+  plugins: [structureTool(), codeInput()],
+  schema: { types: schemas },
+});
+
+export default config;
+
+```
+
+### Update the Schema
+
+To enable code code input we need to update the BlockContent Schema.
+
+Open up **blockContent.ts** file from **sanity→schemas** and add the Code Block schema in the array. 
+
+```jsx
+const blockContent = {
+  title: "Block Content",
+  name: "blockContent",
+  type: "array",
+  of: [
+    ...
+    
+    {
+      type: "code",
+      name: "code",
+      title: "Code Blocks",
+      options: {
+        languageAlternatives: [
+          { title: "", value: "" },
+          { title: "Javascript", value: "javascript" },
+          { title: "HTML", value: "html" },
+          { title: "CSS", value: "css" },
+          { title: "React", value: "react" },
+          { title: "Node", value: "node" },
+          { title: "MySql", value: "mysql" },
+          { title: "ZH", value: "zh", mode: "sh" },
+        ],
+        withFilename: false,
+      },
+    },
+  ],
+};
+export default blockContent;
+
+```
+
+This will enable the code block option on the block content editor.
+
+
+![code block enabled on blog](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/zlg6lyflz8jhbhw7fgbv.png)
+
+
+Now you can add code snippets to your blog posts.
+
+To add a code snippet click the **Code Blocks** button and enter your code. 
+
+Choose the language from the drop-down menu. Once you are done, close the modal, which will save the code snippet. 
+
+
+![adding code snippet preview](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/5r17270b5yqw0jp01f3x.png)
+
+
+We have the code snippet on the post body, but it will not appear on the post because the code snippet is unknown to the RenderBodyContent component. 
+
+We have to update the RenderBodyContent component to render the code snippet. 
+
+### Update RenderBodyContent component
+
+To render the code snippet import these on top of the file. 
+
+```jsx
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { dracula } from "react-syntax-highlighter/dist/esm/styles/hljs";
+```
+
+Then create the **Code** component as shown below:
+
+```jsx
+const Code = ({ value }: any) => {
+  return (
+    <div className="my-10">
+      <SyntaxHighlighter language={value.language} style={dracula}>
+        {value.code}
+      </SyntaxHighlighter>
+    </div>
+  );
+};
+```
+
+Finally, update the components with code components. 
+
+```jsx
+const components = {
+  types: {
+    image: ImageComponent,
+    code: Code,
+  },
+};
+```
+
+This will generate the code snippet on the post. 
+
+This is how it looks:
+
+ 
+![rendered code snippet](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/evoo7vuzbnq7mhnacyux.png)
+
+
+
+If you want to change the theme you can do that very easily. 
+
+Just import the theme of your choice and update the style.
+
+```jsx
+import { dark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+```
+
+```jsx
+const Code = ({ value }: any) => {
+  return (
+    <div className="my-10">
+      <SyntaxHighlighter language={value.language} style={dark}>
+        {value.code}
+      </SyntaxHighlighter>
+    </div>
+  );
+};
+```
+
+You can find themes from here:
+
+[Themes: react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter/blob/master/AVAILABLE_STYLES_PRISM.MD)
+
+Check out this repo for more information on syntax highlighter
+
+[GitHub - react-syntax-highlighter/react-syntax-highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter/tree/master?tab=readme-ov-file)
+
+### Resources:
+
+- [Build a modern blog with Sanity & Nextjs](https://dev.to/coderamrin/build-a-modern-blog-with-nextjs-14-sanity-a-step-by-step-guide-3igd)
+- [Sanity Code Input Plugin](https://www.sanity.io/plugins/code-input)
+- [Source code](https://github.com/Coderamrin/sanity-blog)
+
+### Conclusion
+
+In this tutorial, we successfully integrated code blocks with syntax highlighting into our Sanity-powered blog. I hope you found the guide helpful and informative.
+
+If there's a specific topic you'd like to see covered in the next article, feel free to share your suggestions. I'm always open to feedback and new ideas! 
+
+
+**Connect With Me**
+
+[Twitter/x](https://twitter.com/CoderAmrin)
+
+[Github](https://github.com/coderamrin/)
+
+[LinkedIn](https://www.linkedin.com/in/coderamrin/)
+
+Happy Coding.
