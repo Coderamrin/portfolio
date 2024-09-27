@@ -10,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: [
           "/private/",
-          "/images/icons/favicon.ico",
+          // "/images/icons/favicon.ico",
           "/projects",
           "/contact",
         ],
