@@ -59,7 +59,9 @@ const Contact = () => {
       <section className="py-20">
         <div className="grid md:grid-cols-2 gap-16 ">
           <form onSubmit={handleSubmit} className="w-full">
-            <h3 className="text-xl font-bold mb-3 text-gray-800">Have any question?</h3>
+            <h3 className="text-xl font-bold mb-3 text-gray-800">
+              Have any question?
+            </h3>
             <div className="mb-3">
               <label htmlFor="name" className="form-label">
                 Name
@@ -137,13 +139,6 @@ const Contact = () => {
               </h3>
               <a href="mailto:coderamrin@gmail.com" className="text-gray-600">
                 coderamrin@gmail.com
-              </a>
-
-              <h3 className="text-xl font-medium mt-4 mb-2 text-gray-700">
-                Phone
-              </h3>
-              <a href="tel:+8801621419010" className="text-gray-600">
-                +88 01621419010
               </a>
 
               <h3 className="text-xl font-medium mt-4 mb-2 text-gray-700">
