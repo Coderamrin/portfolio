@@ -15,23 +15,19 @@ const Hero = () => {
         />
 
         <div>
-          <h1 className="text-3xl mb-1 font-bold text-gray-800"> Hi, I am Amrin</h1>
+          <h1 className="text-3xl mb-1 font-bold text-gray-800">
+            {" "}
+            Hi, I am Amrin
+          </h1>
 
           <p className="text-gray-600">
-            Frontend Developer{" "}
-            <a
-              href="https://pimjo.com/"
-              target="_blank"
-              className="bg-gradient-to-r from-violet-500 to-purple-700 inline-block text-transparent bg-clip-text "
-            >
-              @Pimjo
-            </a>
+            Frontend Developer & Technical Writer{" "}
           </p>
         </div>
       </div>
       <p className="py-5 text-gray-600 text-lg">
-        I am a Frontend Developer. I love to build beautiful and interactive
-        websites.
+        I build dynamic, user-friendly websites and empower others by creating
+        clear, engaging technical content.
       </p>
 
       <div className="flex gap-4">

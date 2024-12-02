@@ -7,10 +7,10 @@ const data = [
     name: "Blog",
     link: "/blog",
   },
-  {
-    name: "Projects",
-    link: "/projects",
-  },
+  // {
+  //   name: "Projects",
+  //   link: "/projects",
+  // },
   {
     name: "Contact",
     link: "/contact",
